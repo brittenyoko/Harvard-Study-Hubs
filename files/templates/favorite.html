@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+     <p><b>What is Your Favorite Study Space?</b></p>
+    <div>
+   <form action="/favorite" method="post">
+        <div class="form-group">
+            <select class="form-control" name="location" required>
+                <option disabled selected value="">Select Favorite Locations</option>
+                    {% for item in non_fav_places %}
+                    <tr>
+                        <option value="{{item['location']}}">{{ item['location']}}</option>
+                    </tr>
+                    {% endfor %}
+            </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Select</button>
+    </form>
+
+     <!--<div>
+            <p><b>Locations You have Favorited</b></p>
+            {% for item in places %}
+                {{item[0]['location']}}
+            {% endfor %}
+    </div>-->
+     <p><b>Locations You Have Favorited</b></p>
+    <form action="/lookup" method="post">
+        <div class="form-group">
+            <select class="form-control" name="places" required>
+                <option disabled selected value="">Favorite Locations</option>
+                    {% for item in places %}
+                        <option value="{{item[0]['location']}}">{{ item[0]['location'] }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Look up</button>
+    </form>
+{% endblock %}

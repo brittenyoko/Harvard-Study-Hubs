@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add a Location
+{% endblock %}
+
+{% block main %}
+    <form id="form" action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="loc" name="location" placeholder="Location" type="text" required>
+        </div>
+        <!-- Referenced https://www.reddit.com/r/flask/comments/5q6aiy/how_to_join_multiple_child_templates_to_create/ -->
+         {% include 'catigories.html' %}
+         <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="map" name="map" placeholder="Location" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <!-- This is so that people dont add a location that is already in the database, only its not working. -->
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById -->
+    <script>
+        document.querySelector('form').onsubmit=function(event){
+            event.preventDefault()
+            $.get('/checkloc', {location: document.querySelector('input[name=location]').value}, function(data){
+                if (data) {
+                    document.querySelector('#form').submit();
+                }
+                else {
+                    alert("Location is already in the system");
+                }
+            });
+        };
+    </script>
+{% endblock %}
+

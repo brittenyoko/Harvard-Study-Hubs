@@ -1,0 +1,63 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+body {
+    background-color: lightblue;
+}
+
+ul {
+    text-align: left;
+    list-style-type: circle;
+    font-style: italic;
+}
+
+h3 {
+    text-align:left;
+}
+
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.pad {
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+}

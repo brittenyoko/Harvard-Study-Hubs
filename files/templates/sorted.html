@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+<body>
+<p><h1>Locations with {{ catigory }} of {{ number }} or Greater</h1></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">Location</th>
+        </tr>
+  </thead>
+     <div>
+         <body>
+            {% for place in loc_list %}
+            <tr>
+                <td>{{ place }}</td>
+            </tr>
+            {% endfor %}
+         </body>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create a Meeting
+{% endblock %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Create Meeting</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/meeting" method="post">
+         <div class="form-group">
+            <select class="form-control form-control-lg" type="text" name="places" placeholder="Locations" autocomplete="off" autofocus required>
+                <option disabled selected value="">Locations</option>
+                {% for item in places %}
+                    <option value="{{item.location}}">{{ item.location }}</option>
+                {% endfor %}
+        </div>
+        <!-- need javascript to make sure you cannot input past dates -->
+        <div class="form-group">
+        <input type="date" name="date" class="form-control" required>
+        </div>
+        <!-- TIme does not work on all browsers -->
+        <div class="form-group">
+            <input type="time" name="time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-lg" type="text" name="subject" placeholder="Subject" autocomplete="off" required>
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <!-- Consulted https://answers.laserfiche.com/questions/75138/I-want-to-prevent-user-from-picking-a-date-greater-than-today -->
+    <!-- Prevents past dates from being entered but currently doesn not work-->
+    <script>
+        $(function() {
+            $(document).ready(function () {
+
+            var todaysDate = new Date(); // Gets today's date
+
+            // Max date attribute is in "YYYY-MM-DD".  Need to format today's date accordingly
+
+            var year = todaysDate.getFullYear(); 						// YYYY
+            var month = ("0" + (todaysDate.getMonth() + 1)).slice(-2);	// MM
+            var day = ("0" + todaysDate.getDate()).slice(-2);			// DD
+
+            var maxDate = (year +"-"+ month +"-"+ day); // Results in "YYYY-MM-DD" for today's date
+
+            // Now to set the max date value for the calendar to be today's date
+            $('.inspectionDate input').attr('max',maxDate);
+
+            });
+        });
+    </script>
+
+{% endblock %}

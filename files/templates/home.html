@@ -1,0 +1,54 @@
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <!-- <div>
+         <p><b>Locations You Rated</b></p>
+            {% for item in all_places %}
+                {{item[0]['location']}}
+            {% endfor %}
+    </div>
+    <div>
+        <p><b>Locations You have Favorited</b></p>
+            {% for item in fav_places %}
+                {{item[0]['location']}}
+            {% endfor %}
+    </div>-->
+
+     <p><b>Locations You Have Rated</b></p>
+     <div class="center">
+         <body>
+    <form action="/lookup" method="post">
+        <div class="form-group">
+            <select class="form-control" name="places" >
+                <option disabled selected value="">Rated Locations</option>
+                    {% for item in all_places %}
+                        <option value="{{item[0]['location']}}">{{ item[0]['location']}}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Look up</button>
+    </form>
+         </body>
+    </div>
+
+    <p><b>Locations You Have Favorited</b></p>
+    <form action="/lookup" method="post">
+        <div class="form-group">
+            <select class="form-control" name="places">
+                <option disabled selected value="">Favorite Locations</option>
+                    {% for item in fav_places %}-->
+                        <option value="{{item[0]['location']}}">{{ item[0]['location'] }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Look up</button>
+    </form>
+        </div>
+{% endblock %}

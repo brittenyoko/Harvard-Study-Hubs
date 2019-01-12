@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<p><b>Locations Recently Rated</b></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">Location</th>
+          <th scope="col">Overall Ranking</th>
+          <th scope="col">Best Time to Go (o'clock)</th>
+          <th scope="col">Noise Level</th>
+          <th scope="col">Crowdedness</th>
+          <th scope="col">Atmosphere</th>
+          <th scope="col">Best Activities</th>
+          <th scope="col">Comments</th>
+          <th scope="col">When Added</th>
+        </tr>
+  </thead>
+     <div>
+         <body>
+            {% for i in range(0, places|length) %}
+            <tr>
+                <td>{{ names[i][0]['location'] }}</td>
+                <td>{{ places[i][0]['rating'] }}</td>
+                <td>{{ places[i][0]['time'] }}:00</td>
+                <td>{{ places[i][0]['noise'] }}</td>
+                <td>{{ places[i][0]['crowdedness'] }}</td>
+                <td>{{ places[i][0]['atmosphere'] }}</td>
+                <td>{{ places[i][0]['activity'] }}</td>
+                <td>{{ places[i][0]['comments'] }}</td>
+                <td>{{ places[i][0]['when'] }}</td>
+            </tr>
+            {% endfor %}
+         </body>
+    </div>
+
+{% endblock %}

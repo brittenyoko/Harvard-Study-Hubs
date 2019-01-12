@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+<!-- This page should be disacrded-->
+
+{% block main %}
+<h1> {{ places }} Ratings </h1>
+
+
+<div class="pad">
+<h3> Average Ratings</h3>
+<table class="table table-striped">
+  <thead>
+        <tr>
+          <th scope="col">Average Overall Rating</th>
+          <th scope="col">Average Crowdidness</th>
+          <th scope="col">Busiest Time</th>
+          <th scope="col">Average Noise Level</th>
+          <th scope="col">Average Atmosphere Rating</th>
+
+        </tr>
+  </thead>
+  <tbody>
+        <tr>
+            <td>{{ rating }}</td>
+            <td>{{ crowdedness }}</td>
+            <td>{{ time }}:00</td>
+            <td>{{ noise }}</td>
+            <td>{{ atmosphere }}</td>
+
+        </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="pad">
+<h3>
+  What do People Do Here?
+</h3>
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      {% for activities in activities %}
+        <th scope="col">{{ activities['activity'] }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+      {% for activities in activities %}
+      <td>
+        {{ activities['COUNT(activity)'] }}
+      </td>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+<div class="pad">
+  <h3>Comments</h3>
+  <ul>
+    {% for comments in comments %}
+    <li> {{ comments }} </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

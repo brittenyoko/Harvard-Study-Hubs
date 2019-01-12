@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Lookup
+{% endblock %}
+
+{% block main %}
+<h1>
+    Pick a Location
+</h1>
+   <form action="/lookup" method="post">
+        <div class="form-group">
+            <select class="form-control" name="places" required>
+                <option disabled selected value="">Locations</option>
+                    {% for item in places %}
+                        <option value="{{item.location}}">{{ item.location }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Look up</button>
+    </form>
+{% endblock %}
